@@ -21,7 +21,7 @@ public class Sketch extends PApplet
   {
     background(210, 255, 173);
   }
-  //declare locations
+  //declare various locations and colors
   float X_Value_lvl2 = random(width);
   float Y_Value_lvl2 = random(height);
   float X_Value_lvl3 = random(width);
@@ -33,7 +33,8 @@ public class Sketch extends PApplet
   {
     drawSnowman_lvl2(X_Value_lvl2, Y_Value_lvl2);
     drawSnowman_lvl3(X_Value_lvl3, Y_Value_lvl3, colorR, colorG, colorB);
-    X_Value_lvl4(width/2, height/2);
+    fill(0);
+    text(Center_X_Value_lvl4(200), 200, 200);
   }
   //level 2
   private void drawSnowman_lvl2(float x, float y)
@@ -76,8 +77,8 @@ public class Sketch extends PApplet
     triangle(x - width/6, y - height / 12, x + width / 6, y- height / 12, x, y - height * 11 / 60);
   }
   //level 4
-  private float X_Value_lvl4(float x, float y) 
+  private float Center_X_Value_lvl4(float dimension) 
   {
-    return (x - width / 4); 
+    return width/2 - dimension/2; 
   }
 }
