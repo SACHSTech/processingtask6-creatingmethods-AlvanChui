@@ -21,64 +21,64 @@ public class Sketch extends PApplet
   {
     background(210, 255, 173);
   }
-  //declare various locations and colors
-  float X_Value_lvl2 = random(width);
-  float Y_Value_lvl2 = random(height);
-  float X_Value_lvl3 = random(width);
-  float Y_Value_lvl3 = random(height);
-  float colorR = random(255);
-  float colorG = random(255);
-  float colorB = random(255);
+  //the main program that executes the methods
   public void draw()
   {
-    drawSnowman_lvl2(X_Value_lvl2, Y_Value_lvl2);
-    drawSnowman_lvl3(X_Value_lvl3, Y_Value_lvl3, colorR, colorG, colorB);
-    fill(0);
-    text(Center_X_Value_lvl4(200), 200, 200);
+    drawSnowman(100, 175, 255, 255, 255);
+    drawSun(width-10, 0, 100);
+    drawFloor(-1, height*95/100, width+1, height+1);
+    drawSnowman(200, centerValue(200), 255, 255, 255);
   }
-  //level 2
-  private void drawSnowman_lvl2(float x, float y)
+  
+  /* FloorX: x-coordinate of starting point (top left angle) of the floor
+   * FloorY: y-coordinate of starting point (top left angle) of the floor
+   * FloorWidth: the width of the floor
+   * FloorHeight: the height of the floor
+   */
+  private void drawFloor(float FloorX, float FloorY, float FloorWidth, float FloorHeight)
   {
     fill(255);
+    rect(FloorX, FloorY, FloorWidth, FloorHeight);
+  }
+  /* SunX: the x-coordinate of the center point of the sun
+   * SunY: the y-coordinate of the center point of the sun
+   * SunSize: the radius of the sun
+   */
+  private void drawSun(float SunX, float SunY, float SunSize)
+  {
+    fill(255, 127, 0);
+    ellipse(SunX, SunY, SunSize, SunSize);
+  }
+  /* x: x-coordinades of Snownman
+   * y: y-coordinades of Snownman
+   * colorR: color (red) value of snowman
+   * colorG: color (green) value of snowman
+   * colorB: color (blue) value of snowman
+   */
+  private void drawSnowman(float x, float y, float colorR, float colorG, float colorB)
+  {
+    fill(colorR, colorG, colorB);
     ellipse(x, y, width / 4, height / 4);
-    fill(255);
+    fill(colorR, colorG, colorB);
     ellipse(x, y + height / 3, width * 5 / 12, height * 5 / 12);
-    fill(0);
+    fill(0,0,0);
     rect(x - width / 150, y + height * 7 / 30, width / 75, height / 60);
-    fill(0);
+    fill(0,0,0);
     rect(x - width / 150,y + height * 17 / 60, width / 75, height / 60);
-    fill(0);
+    fill(0,0,0);
     rect(x - width / 150, y + height / 3, width / 75, height / 60);
-    fill(127);
+    fill(255 - colorR/2, 255 - colorG/2, 255 - colorB/2);
     ellipse(x - width / 20, y - height / 40, width / 40, height / 40);
-    fill(127);
+    fill(255 - colorR/2, 255 - colorG/2, 255 - colorB/2);
     ellipse(x + width / 20, y - height / 40, width / 40, height / 40);
     fill(255, 0, 0);
     triangle(x - width/6, y - height / 12, x + width / 6, y- height / 12, x, y - height * 11 / 60);
   }
-  //level 3
-  private void drawSnowman_lvl3(float x, float y, float colorR, float colorG, float colorB)
+  /* dimension: y-coordinates of of the Snowman
+   * returned value: the center of the drawing
+   */
+  private float centerValue(float dimension) 
   {
-    fill(colorR, colorG, colorB);
-    ellipse(x, y, width / 4, height / 4);
-    fill(colorR, colorG, colorB);
-    ellipse(x, y + height / 3, width * 5 / 12, height * 5 / 12);
-    fill(0,0,0);
-    rect(x - width / 150, y + height * 7 / 30, width / 75, height / 60);
-    fill(0,0,0);
-    rect(x - width / 150,y + height * 17 / 60, width / 75, height / 60);
-    fill(0,0,0);
-    rect(x - width / 150, y + height / 3, width / 75, height / 60);
-    fill((255 - colorR) * 3/2, (255 - colorG) * 3/2, (255 - colorB) * 3/2);
-    ellipse(x - width / 20, y - height / 40, width / 40, height / 40);
-    fill((255 - colorR) * 3/2, (255 - colorG) * 3/2, (255 - colorB) * 3/2);
-    ellipse(x + width / 20, y - height / 40, width / 40, height / 40);
-    fill((255 - colorR) * 2, (255 - colorG) * 2, (255 - colorB) * 2);
-    triangle(x - width/6, y - height / 12, x + width / 6, y- height / 12, x, y - height * 11 / 60);
-  }
-  //level 4
-  private float Center_X_Value_lvl4(float dimension) 
-  {
-    return width/2 - dimension/2; 
+    return dimension - height/6; 
   }
 }
